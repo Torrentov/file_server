@@ -25,7 +25,7 @@ SECRET_KEY = 'o64pcl+q(r9*3!*rd=$3*mi#9^$yu_t&kh64-@orrcdy@jve-3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'torrentov.pythonanywhere.com']
 
 
 # Application definition

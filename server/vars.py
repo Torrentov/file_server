@@ -1,4 +1,6 @@
 SERVER_PATH = '/Users/Artem/Desktop/school_server/server'
+#SERVER_PATH = '/home/Torrentov/file_server'
+
 PATH = SERVER_PATH + '/files/'
 TMP_PATH = PATH + 'tmp/'
 FILE_PATH = PATH + 'needed_files'
