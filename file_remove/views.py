@@ -6,7 +6,7 @@ from server.vars import PATH, SITE
 # Create your views here.
 
 def index(request):
-    if not request.user.is_authenticated:
+    if not request.user.is_authenticated or request.session['auth'] != 1:
         return HttpResponseRedirect('/')
     curr = request.GET['delete']
     curr = curr.split('/')
@@ -16,4 +16,5 @@ def index(request):
         fold += elem + '/'
     current_site = SITE + fold.replace(PATH, '')
     remove(request.GET['delete'])
+    remove(PATH + 'static/' + request.GET['delete'].replace(PATH, ''))
     return HttpResponseRedirect(current_site)

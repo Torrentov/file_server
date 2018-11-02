@@ -41,13 +41,9 @@ def index(request):
                 curr + "'>" + elem[0] + "</a>\n"
         else:
             current_file = elem[2] + elem[0]
-            c = "<a href='" + current_file + "'" +\
-                " download=''>" + "" + elem[
-                0] + "</a>___<a href='%s?delete=%s'>**Удалить файл**</a></h1>\n" %\
-                (SITE_DELETE_FILE, current_file)
             ans += "<h1><img src=" + '"' + '{% static ' + '"images/file_icon.png"' + ' %}' + '"' + " height='50' width='40' alt='Файл'/>" +\
-                "<a href='" + current_file + "'" +\
-                " download=''>" + "" + elem[
+                "<a href='" + '{% static "' + request.GET['folder'] + elem[0] + '" %}' + "'" +\
+                " download>" + "" + elem[
                 0] + "</a>___<a href='%s?delete=%s'>**Удалить файл**</a></h1>\n" %\
                 (SITE_DELETE_FILE, current_file)
         current.pop(0)

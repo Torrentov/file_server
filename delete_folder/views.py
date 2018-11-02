@@ -5,7 +5,7 @@ from server.vars import PATH, FOLDER_DELETE, SITE
 # Create your views here.
 
 def index(request):
-    if not request.user.is_authenticated:
+    if not request.user.is_authenticated or request.session['auth'] != 1:
         return HttpResponseRedirect('/')
     delete = FOLDER_DELETE + request.GET['delete'].replace(' ', '%20')
     curr = request.GET['delete']

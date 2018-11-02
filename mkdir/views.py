@@ -24,6 +24,7 @@ def index(request):
                 else:
                     name += '(%s)' % str(i)
             os.mkdir(real_path + name)
+            os.mkdir(PATH + "static/" + real_path.replace(PATH, '') + name)
             return HttpResponseRedirect(current_site)
     else:
         form = NewFolderForm()

@@ -4,8 +4,9 @@ from django.template import RequestContext
 from django.db import models
 from .forms import UploadFileForm
 from .models import Document
-from server.vars import PATH, TMP_PATH
+from server.vars import PATH, TMP_PATH, SITE
 import os
+from shutil import copyfile
 
 # Create your views here.
 
@@ -14,7 +15,7 @@ def index(request):
         return HttpResponseRedirect('/')
     needed_path = PATH + request.GET['folder']
     os.chdir(TMP_PATH)
-    SITE = "http://127.0.0.1:8000/files?folder=" + request.GET['folder']
+    current_site = SITE + request.GET['folder']
     form = UploadFileForm(request.POST, request.FILES)
     if form.is_valid():
         form.save()
@@ -31,8 +32,9 @@ def index(request):
                 current[0] += '(%s)' % str(i)
                 current = current[0] + '.' + current[1]
         needed_path += current
+        copyfile(current_file, PATH + "static/" + needed_path.replace(PATH, ''))
         os.rename(current_file, needed_path)
-        return HttpResponseRedirect(SITE)
+        return HttpResponseRedirect(current_site)
     else:
         form = UploadFileForm()
     return render(request, 'upload.html', {'form': form})
