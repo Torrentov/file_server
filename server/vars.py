@@ -5,6 +5,7 @@ PATH = SERVER_PATH + '/files/'
 TMP_PATH = PATH + 'tmp/'
 FILE_PATH = PATH + 'needed_files'
 
+#DEFAULT_SITE = 'http://torrentov.pythonanywhere.com/files'
 DEFAULT_SITE = 'http://127.0.0.1:8000/files'
 SITE = DEFAULT_SITE + '?folder='
 SITE_UPLOAD = DEFAULT_SITE + '/upload'

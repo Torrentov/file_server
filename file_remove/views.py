@@ -17,4 +17,4 @@ def index(request):
     current_site = SITE + fold.replace(PATH, '')
     remove(request.GET['delete'])
     remove(PATH + 'static/' + request.GET['delete'].replace(PATH, ''))
-    return HttpResponseRedirect(current_site)
+    return HttpResponseRedirect(current_site.replace(' ', '%20'))

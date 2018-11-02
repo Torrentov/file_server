@@ -34,7 +34,7 @@ def index(request):
         needed_path += current
         copyfile(current_file, PATH + "static/" + needed_path.replace(PATH, ''))
         os.rename(current_file, needed_path)
-        return HttpResponseRedirect(current_site)
+        return HttpResponseRedirect(current_site.replace(' ', '%20'))
     else:
         form = UploadFileForm()
     return render(request, 'upload.html', {'form': form})

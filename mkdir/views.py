@@ -25,7 +25,7 @@ def index(request):
                     name += '(%s)' % str(i)
             os.mkdir(real_path + name)
             os.mkdir(PATH + "static/" + real_path.replace(PATH, '') + name)
-            return HttpResponseRedirect(current_site)
+            return HttpResponseRedirect(current_site.replace(' ', '%20'))
     else:
         form = NewFolderForm()
     return render(request, 'folder.html', {'form': form, 'folder': request.GET['folder']})

@@ -19,4 +19,4 @@ def index(request):
     rmtree(request.GET['delete'], ignore_errors=False, onerror=None)
     rmtree(PATH + "static/" + request.GET['delete'].replace(PATH, ''),
            ignore_errors=False, onerror=None)
-    return HttpResponseRedirect(current_site)
+    return HttpResponseRedirect(current_site.replace(' ', '%20'))

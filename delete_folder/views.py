@@ -18,7 +18,7 @@ def index(request):
     file = request.GET['delete'].split('/')[-1]
     ans = "<head><title>Удалить папку</title></head>"
     ans += "<h1>Вы уверены, что хотите удалить папку %s со всем ее содержимым?" % file
-    ans += "<h1><a href=%s>Да</a></h1>" % delete
+    ans += "<h1><a href=%s>Да</a></h1>" % delete.replace(' ', '%20')
     ans += "</br></br>"
-    ans += "<h1><a href=%s>Нет</a></h1>" % current_site
+    ans += "<h1><a href=%s>Нет</a></h1>" % current_site.replace(' ', '%20')
     return HttpResponse(ans)
