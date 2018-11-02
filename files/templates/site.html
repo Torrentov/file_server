@@ -1,0 +1,7 @@
+<head><title>Файлы</title></head>
+{% load staticfiles %}
+<h1><a href='http://127.0.0.1:8000/files/mkdir?folder=/Users/Artem/Desktop/school_server/server/files/needed_files/'>**Создать папку**</a></h1>
+<h1><a href='http://127.0.0.1:8000/files/upload?folder=needed_files/'>**Загрузить файл**</a></h1></br>
+<h1><img src="{% static "images/folder_icon.png" %}" alt="Папка" height="50" width="50" /><a href='/files?folder=needed_files/as/'>as</a>
+<h1><img src="{% static "images/file_icon.png" %}" height='50' width='40' alt='Файл'/><a href='/Users/Artem/Desktop/school_server/server/files/needed_files/main.cpp' download=''>main.cpp</a>___<a href='http://127.0.0.1:8000/files/delete_file?delete=/Users/Artem/Desktop/school_server/server/files/needed_files/main.cpp'>**Удалить файл**</a></h1>
+
