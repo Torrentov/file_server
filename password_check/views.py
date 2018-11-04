@@ -7,7 +7,7 @@ from server.vars import SITE
 # Create your views here.
 
 def get_passw(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.session['auth'] == 1:
         return HttpResponseRedirect(SITE + 'needed_files/')
     error = ''
     user = None

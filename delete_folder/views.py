@@ -14,7 +14,7 @@ def index(request):
     fold = ''
     for elem in curr:
         fold += elem + '/'
-    current_site = SITE + fold.replace(PATH, '')
+    current_site = SITE + fold.replace(PATH + 'static/', '')
     file = request.GET['delete'].split('/')[-1]
     ans = "<head><title>Удалить папку</title></head>"
     ans += "<h1>Вы уверены, что хотите удалить папку %s со всем ее содержимым?" % file

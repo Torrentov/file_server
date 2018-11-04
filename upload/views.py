@@ -13,7 +13,7 @@ from shutil import copyfile
 def index(request):
     if not request.user.is_authenticated or request.session['auth'] != 1:
         return HttpResponseRedirect('/')
-    needed_path = PATH + request.GET['folder']
+    needed_path = PATH + 'static/' + request.GET['folder']
     os.chdir(TMP_PATH)
     current_site = SITE + request.GET['folder']
     form = UploadFileForm(request.POST, request.FILES)
@@ -32,8 +32,7 @@ def index(request):
                 current[0] += '(%s)' % str(i)
                 current = current[0] + '.' + current[1]
         needed_path += current
-        copyfile(current_file, PATH + "static/" + needed_path.replace(PATH, ''))
-        os.rename(current_file, needed_path)
+        os.rename(current_file, PATH + needed_path.replace(PATH, ''))
         return HttpResponseRedirect(current_site.replace(' ', '%20'))
     else:
         form = UploadFileForm()

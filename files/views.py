@@ -10,7 +10,7 @@ def index(request):
     if not request.user.is_authenticated or request.session['auth'] != 1:
         return HttpResponseRedirect('/')
     folder = request.GET['folder']
-    real_path = PATH + folder
+    real_path = PATH + "static/" + folder
     raw_current = os.listdir(path=real_path)
     ans = '<head><title>Файлы</title></head>\n'
     ans += '{% load staticfiles %}\n'
@@ -41,6 +41,7 @@ def index(request):
                 curr.replace(' ', '%20') + "'>" + elem[0] + "</a>\n"
         else:
             current_file = elem[2] + elem[0]
+            current_file = current_file.replace(PATH + 'static/', '')
             ans += "<h1><img src=" + '"' + '{% static ' + '"images/file_icon.png"' + ' %}' + '"' + " height='50' width='40' alt='Файл'/>" +\
                 "<a href='" + '{% static "' + request.GET['folder'] + elem[0] + '" %}' + "'" +\
                 " download>" + "" + elem[

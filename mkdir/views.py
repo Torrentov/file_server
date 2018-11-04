@@ -10,7 +10,7 @@ def index(request):
     if not request.user.is_authenticated or request.session['auth'] != 1:
         return HttpResponseRedirect('/')
     if request.method == 'POST':
-        current_site = SITE + request.GET['folder'].replace(PATH, '')
+        current_site = SITE + request.GET['folder'].replace(PATH + 'static/', '')
         real_path = request.GET['folder']
         form = NewFolderForm(request.POST)
         if form.is_valid():
@@ -23,8 +23,7 @@ def index(request):
                     i += 1
                 else:
                     name += '(%s)' % str(i)
-            os.mkdir(real_path + name)
-            os.mkdir(PATH + "static/" + real_path.replace(PATH, '') + name)
+            os.mkdir(PATH + real_path.replace(PATH, '') + name)
             return HttpResponseRedirect(current_site.replace(' ', '%20'))
     else:
         form = NewFolderForm()

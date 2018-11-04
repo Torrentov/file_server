@@ -15,8 +15,7 @@ def index(request):
     fold = ''
     for elem in curr:
         fold += elem + '/'
-    current_site = SITE + fold.replace(PATH, '')
-    rmtree(request.GET['delete'], ignore_errors=False, onerror=None)
-    rmtree(PATH + "static/" + request.GET['delete'].replace(PATH, ''),
+    current_site = SITE + fold.replace(PATH + 'static/', '')
+    rmtree(PATH + request.GET['delete'].replace(PATH, ''),
            ignore_errors=False, onerror=None)
     return HttpResponseRedirect(current_site.replace(' ', '%20'))
