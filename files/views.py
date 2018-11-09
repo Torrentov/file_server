@@ -1,5 +1,6 @@
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
+from time import time
 import os
 from server.vars import SITE_UPLOAD, SITE_DELETE_FOLDER, SITE_DELETE_FILE,\
     SITE_CREATE_FOLDER, FILE_PATH, SERVER_PATH, SITE, PATH
