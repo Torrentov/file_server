@@ -18,5 +18,5 @@ def get_passw(request):
                 request.session['auth'] = 1
                 return HttpResponseRedirect("files?folder=needed_files/")
         else:
-            error = "Ваши логин и пароль не совпадают\nПожалуйста, попробуйте снова"
+            error = "Ваши логин и пароль не совпадают.</br>Пожалуйста, попробуйте снова."
     return render(request, "passw.html", {'error': error})
