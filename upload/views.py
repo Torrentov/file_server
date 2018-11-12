@@ -8,6 +8,7 @@ from time import time
 from server.vars import PATH, TMP_PATH, SITE
 import os
 from shutil import copyfile
+from server.vars import SERVER_PATH
 
 # Create your views here.
 
@@ -18,14 +19,13 @@ class crutch():
 def index(request):
     if not request.user.is_authenticated or request.session['auth'] != 1:
         return HttpResponseRedirect('/')
+    log = open(SERVER_PATH + "/server/logs.txt", "a")
     needed_path = PATH + 'static/' + request.GET['folder']
     os.chdir(TMP_PATH)
-    name = ''
     k = 'crutch'
     request.FILES[k] = crutch()
     for key in request.FILES:
         if key != 'crutch':
-            name = request.FILES[key].name
             k = key
     curr = str(time())
     real_name = request.FILES[k].name
@@ -48,6 +48,8 @@ def index(request):
                 current = current[0] + '.' + current[1]
         needed_path += current.replace(curr, '')
         os.rename(current_file, PATH + needed_path.replace(PATH, ''))
+        print((PATH + needed_path.replace(PATH, '')).replace(' ', '%20'), curr, file=log)
+        log.close()
         return HttpResponseRedirect(current_site.replace(' ', '%20'))
     else:
         form = UploadFileForm()

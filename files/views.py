@@ -29,6 +29,12 @@ def index(request):
             fold += elem + '/'
         ans += "<h1><a href=" + SITE + fold.replace(' ', '%20') + ">**Назад**</a></h1>\n"
     current = []
+    logs = open(SERVER_PATH + "/server/logs.txt", "r")
+    time_base = dict()
+    for line in logs:
+        line = line.split()
+        time_base[line[0].replace(PATH + 'static/', '')] = line[1]
+    logs.close()
     for elem in raw_current:
         current.append([elem, 0, real_path])
     while len(current) != 0:
@@ -39,15 +45,21 @@ def index(request):
             ans += '<h1><img src="{% static "images/folder_icon.png" %}"' \
                    ' alt="Папка" height="50" width="50" />' +\
                 "<a href='/files?folder=needed_files" +\
-                curr.replace(' ', '%20') + "'>" + elem[0] + "</a>\n"
+                curr.replace(' ', '%20') + "'>" + elem[0] + "</a>" + \
+                "<input type='hidden' name=" + elem[0] + " value=" +\
+                   time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
+                   "></h1>\n"
         else:
             current_file = elem[2] + elem[0]
             current_file = current_file.replace(PATH + 'static/', '')
             ans += "<h1><img src=" + '"' + '{% static ' + '"images/file_icon.png"' + ' %}' + '"' + " height='50' width='40' alt='Файл'/>" +\
                 "<a href='" + '{% static "' + request.GET['folder'] + elem[0] + '" %}' + "'" +\
                 " download>" + "" + elem[
-                0] + "</a>___<a href='%s?delete=%s'>**Удалить файл**</a></h1>\n" %\
-                (SITE_DELETE_FILE, current_file.replace(' ', '%20'))
+                0] + "</a>___<a href='" + SITE_DELETE_FILE + "?delete=" + \
+                current_file.replace(' ', '%20') + "'>**Удалить файл**</a>" \
+                + "<input type='hidden' name=" + elem[0] + " value=" +\
+                time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
+                "></h1>\n"
         current.pop(0)
     file = open(SERVER_PATH + "/files/templates/site.html", "w")
     print(ans, file=file)
