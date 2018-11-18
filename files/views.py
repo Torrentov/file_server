@@ -46,7 +46,7 @@ def index(request):
                    ' alt="Папка" height="50" width="50" />' +\
                 "<a href='/files?folder=needed_files" +\
                 curr.replace(' ', '%20') + "'>" + elem[0] + "</a>" + \
-                "<input type='hidden' name=" + elem[0] + " value=" +\
+                "<input type='hidden' name=" + elem[0].replace(' ', '%20') + " value=" +\
                    time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
                    "></h1>\n"
         else:
@@ -57,7 +57,7 @@ def index(request):
                 " download>" + "" + elem[
                 0] + "</a>___<a href='" + SITE_DELETE_FILE + "?delete=" + \
                 current_file.replace(' ', '%20') + "'>**Удалить файл**</a>" \
-                + "<input type='hidden' name=" + elem[0] + " value=" +\
+                + "<input type='hidden' name=" + elem[0].replace(' ', '%20') + " value=" +\
                 time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
                 "></h1>\n"
         current.pop(0)
