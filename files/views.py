@@ -13,14 +13,17 @@ def index(request):
     folder = request.GET['folder']
     real_path = PATH + "static/" + folder
     raw_current = os.listdir(path=real_path)
-    ans = '<head><title>Файлы</title></head>\n'
+    ans = '<head><title>Файлы</title>'
+    ans += '<style> a { text-decoration: none; } </style>'
+    ans += '<style type="text/css"> A { color: #0000ff; } A:visited { color: #0000ff; } </style>'
+    ans += '</head>\n'
     ans += '{% load staticfiles %}\n'
-    ans += "<h1><a href='%s?folder=%s'>**Создать папку**</a></h1>\n"  %\
+    ans += "<h1><a href='%s?folder=%s' style='color: #7442c8'>**Создать папку**</a></h1>\n"  %\
     (SITE_CREATE_FOLDER, real_path.replace(' ', '%20'))
     if folder != 'needed_files/':
-        ans += "<h1><a href='%s?delete=%s'>**Удалить папку**</a></h1>\n" %\
+        ans += "<h1><a href='%s?delete=%s' style='color: #7442c8'>**Удалить папку**</a></h1>\n" %\
         (SITE_DELETE_FOLDER, real_path.replace(' ', '%20'))
-    ans += "<h1><a href='%s?folder=%s'>**Загрузить файл**</a></h1></br>\n" % \
+    ans += "<h1><a href='%s?folder=%s' style='color: #7442c8'>**Загрузить файл**</a></h1></br>\n" % \
     (SITE_UPLOAD, folder.replace(' ', '%20'))
     if folder != 'needed_files/':
         curr = folder.split('/')[:-2]
@@ -55,8 +58,8 @@ def index(request):
             ans += "<h1><img src=" + '"' + '{% static ' + '"images/file_icon.png"' + ' %}' + '"' + " height='50' width='40' alt='Файл'/>" +\
                 "<a href='" + '{% static "' + request.GET['folder'] + elem[0] + '" %}' + "'" +\
                 " download>" + "" + elem[
-                0] + "</a>___<a href='" + SITE_DELETE_FILE + "?delete=" + \
-                current_file.replace(' ', '%20') + "'>**Удалить файл**</a>" \
+                0] + "</a>&#160;&#160;&#160;&#160;&#160;<a href='" + SITE_DELETE_FILE + "?delete=" + \
+                current_file.replace(' ', '%20') + "' style='color: #7442c8'>**Удалить файл**</a>" \
                 + "<input type='hidden' name=" + elem[0].replace(' ', '%20') + " value=" +\
                 time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
                 "></h1>\n"
