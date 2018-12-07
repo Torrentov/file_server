@@ -5,3 +5,5 @@ myvenv
 db.sqlite3
 .DS_Store
 logs.txt
+/files/static/needed_files
+static/needed_files
