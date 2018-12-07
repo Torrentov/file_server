@@ -2,6 +2,7 @@
 WSGI config for server project.
 finally here
 JOJO
+DIO
 It exposes the WSGI callable as a module-level variable named ``application``.
 
 For more information on this file, see
