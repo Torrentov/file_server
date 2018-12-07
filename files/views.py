@@ -15,15 +15,16 @@ def index(request):
     raw_current = os.listdir(path=real_path)
     ans = '<head><title>Файлы</title>'
     ans += '<style> a { text-decoration: none; } </style>'
-    ans += '<style type="text/css"> A { color: #0000ff; } A:visited { color: #0000ff; } </style>'
+    ans += '<style type="text/css"> A { color: #8b4513; } A:visited { color: #8b4513; } </style>'
     ans += '</head>\n'
+    ans += '<body style="background: beige">'
     ans += '{% load staticfiles %}\n'
-    ans += "<h1><a href='%s?folder=%s' style='color: #7442c8'>**Создать папку**</a></h1>\n"  %\
+    ans += "<h1><a href='%s?folder=%s' style='color: #2a5c03'>**Создать папку**</a></h1>\n"  %\
     (SITE_CREATE_FOLDER, real_path.replace(' ', '%20'))
     if folder != 'needed_files/':
-        ans += "<h1><a href='%s?delete=%s' style='color: #7442c8'>**Удалить папку**</a></h1>\n" %\
+        ans += "<h1><a href='%s?delete=%s' style='color: #2a5c03'>**Удалить папку**</a></h1>\n" %\
         (SITE_DELETE_FOLDER, real_path.replace(' ', '%20'))
-    ans += "<h1><a href='%s?folder=%s' style='color: #7442c8'>**Загрузить файл**</a></h1></br>\n" % \
+    ans += "<h1><a href='%s?folder=%s' style='color: #2a5c03'>**Загрузить файл**</a></h1></br>\n" % \
     (SITE_UPLOAD, folder.replace(' ', '%20'))
     if folder != 'needed_files/':
         curr = folder.split('/')[:-2]
@@ -59,11 +60,12 @@ def index(request):
                 "<a href='" + '{% static "' + request.GET['folder'] + elem[0] + '" %}' + "'" +\
                 " download>" + "" + elem[
                 0] + "</a>&#160;&#160;&#160;&#160;&#160;<a href='" + SITE_DELETE_FILE + "?delete=" + \
-                current_file.replace(' ', '%20') + "' style='color: #7442c8'>**Удалить файл**</a>" \
+                current_file.replace(' ', '%20') + "' style='color: #2a5c03'>**Удалить файл**</a>" \
                 + "<input type='hidden' name=" + elem[0].replace(' ', '%20') + " value=" +\
                 time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
                 "></h1>\n"
         current.pop(0)
+    ans += '</body>'
     file = open(SERVER_PATH + "/files/templates/site.html", "w")
     print(ans, file=file)
     file.close()
