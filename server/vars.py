@@ -14,3 +14,6 @@ SITE_DELETE_FILE = DEFAULT_SITE + '/delete_file'
 SITE_CREATE_FOLDER = DEFAULT_SITE + '/mkdir'
 FILE_DELETE = SITE_DELETE_FILE + '/file_remove?delete='
 FOLDER_DELETE = SITE_DELETE_FOLDER + '/folder_remove?delete='
+
+FONT_PATH = "~/.fonts/8277.ttf"
+#FONT_PATH = "/Users/Artem/Downloads/8277.ttf"

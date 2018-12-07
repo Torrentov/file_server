@@ -8,4 +8,5 @@ logs.txt
 /server/logs.txt
 server/logs.txt
 /files/static/needed_files
-static/needed_files
+files/static/needed_files
+needed_files

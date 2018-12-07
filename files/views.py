@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from time import time
 import os
 from server.vars import SITE_UPLOAD, SITE_DELETE_FOLDER, SITE_DELETE_FILE,\
-    SITE_CREATE_FOLDER, FILE_PATH, SERVER_PATH, SITE, PATH
+    SITE_CREATE_FOLDER, FILE_PATH, SERVER_PATH, SITE, PATH, FONT_PATH
 
 # Create your views here.
 
@@ -16,6 +16,8 @@ def index(request):
     ans = '<head><title>Файлы</title>'
     ans += '<style> a { text-decoration: none; } </style>'
     ans += '<style type="text/css"> A { color: #8b4513; } A:visited { color: #8b4513; } </style>'
+    ans += '<style> @font-face { font-family: Calibri; src: url(%s); } h1 { font-family:' \
+           'Calibri; } </style>' % FONT_PATH
     ans += '</head>\n'
     ans += '<body style="background: beige">'
     ans += '{% load staticfiles %}\n'
@@ -60,7 +62,7 @@ def index(request):
                 "<a href='" + '{% static "' + request.GET['folder'] + elem[0] + '" %}' + "'" +\
                 " download><font face='Calibri'>" + "" + elem[
                 0] + "</font></a>&#160;&#160;&#160;&#160;&#160;<a href='" + SITE_DELETE_FILE + "?delete=" + \
-                current_file.replace(' ', '%20') + "' style='color: #2a5c03'><font face='Colibri'>**Удалить файл**</a>" \
+                current_file.replace(' ', '%20') + "' style='color: #2a5c03'><font face='Calibri'>**Удалить файл**</a>" \
                 + "</font><input type='hidden' name=" + elem[0].replace(' ', '%20') + " value=" +\
                 time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
                 "></h1>\n"
