@@ -1,12 +1,30 @@
 <html>
 <head>
     <title>Создать папку</title>
+    <style> a { text-decoration: none; } </style>
+    <style type="text/css"> A { color: #8b4513; } A:visited { color: #8b4513; } </style>
+    <style> @font-face { font-family: Calibri; src: url({{FONT}}); }
+    h1 { font-family: 'Calibri' } </style>
+    <style>
+        .btn {
+            height: 30px;
+            width: 90px;
+            font-size: 22px;
+            font-family: "Calibri";
+        }
+    </style>
 </head>
 <body style="background: beige">
-    <form action="/files/mkdir?folder={{ folder }}" method="post">
+    <h1 style="display: inline"><font face="Calibri"><a style='color: #8b4513'>
+        Введите имя папки:&#160;
+    </a></font></h1>
+    <form action="/files/mkdir?folder={{ folder }}" method="post" style="font-family: Calibri">
         {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Создать" name="submit_button "/>
+        <h1 style="display: inline"><font face="Calibri">
+            <a style='color: #8b4513'>
+            {{ form }}
+            <input type="submit" value="Создать" name="submit_button" class="btn"/>
+            </a></font></h1>
     </form>
 </body>
 </html>

@@ -33,7 +33,7 @@ def index(request):
         fold = ''
         for elem in curr:
             fold += elem + '/'
-        ans += "<h1><a href=" + SITE + fold.replace(' ', '%20') + ">**Назад**</a></h1>\n"
+        ans += "<h1><a href=" + SITE + fold.replace(' ', '%20') + " style='color: #2a5c03'>**Назад**</a></h1>\n"
     current = []
     logs = open(SERVER_PATH + "/server/logs.txt", "r")
     time_base = dict()

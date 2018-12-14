@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 import os
 from .forms import NewFolderForm
-from server.vars import PATH, SITE, SERVER_PATH
+from server.vars import PATH, SITE, SERVER_PATH, FONT_PATH
 from time import time
 
 # Create your views here.
@@ -13,7 +13,7 @@ def index(request):
     if request.method == 'POST':
         current_site = SITE + request.GET['folder'].replace(PATH + 'static/', '')
         real_path = request.GET['folder']
-        form = NewFolderForm(request.POST)
+        form = NewFolderForm(request.POST, label_suffix="huy")
         if form.is_valid():
             log = open(SERVER_PATH + "/server/logs.txt", "a")
             name = form.cleaned_data['folder']
@@ -31,4 +31,5 @@ def index(request):
             return HttpResponseRedirect(current_site.replace(' ', '%20'))
     else:
         form = NewFolderForm()
-    return render(request, 'folder.html', {'form': form, 'folder': request.GET['folder']})
+    return render(request, 'folder.html', {'form': form, 'folder': request.GET['folder'],
+                                           'FONT': FONT_PATH})

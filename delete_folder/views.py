@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from server.vars import PATH, FOLDER_DELETE, SITE
+from server.vars import PATH, FOLDER_DELETE, SITE, FONT_PATH
 
 # Create your views here.
 
@@ -15,10 +15,19 @@ def index(request):
     for elem in curr:
         fold += elem + '/'
     current_site = SITE + fold.replace(PATH + 'static/', '')
-    file = request.GET['delete'].split('/')[-1]
-    ans = "<head><title>Удалить папку</title></head>"
-    ans += "<h1>Вы уверены, что хотите удалить папку %s со всем ее содержимым?" % file
-    ans += "<h1><a href=%s>Да</a></h1>" % delete.replace(' ', '%20')
-    ans += "</br></br>"
-    ans += "<h1><a href=%s>Нет</a></h1>" % current_site.replace(' ', '%20')
+    file = request.GET['delete'].split('/')[-2]
+    ans = "<head><title>Удалить папку</title>"
+    ans += '<style> a { text-decoration: none; } </style>'
+    ans += '<style type="text/css"> A { color: #2a5c03; } A:visited { color: #2a5c03; } </style>'
+    ans += "<style> @font-face { font-family: Calibri; src: url(%s); } h1 { font-family:' \
+           'Calibri; } </style>" % FONT_PATH
+    ans += "</head>"
+    ans += '<body style="background: beige">'
+    ans += "<h1><font face='Calibri'><a style='color: #8b4513'>" \
+           "Вы уверены, что хотите удалить папку %s со всем ее содержимым?" \
+           "</br></br></a></font></h1>" % ('"' + file + '"')
+    ans += "<h1><font face='Calibri'><a href=%s>Да</a>&#160;&#160;&#160;&#160;&#160;" \
+           "&#160;&#160;&#160;&#160;&#160;<a href=%s>Нет</a></font></h1>" \
+           % (delete.replace(' ', '%20'), current_site.replace(' ', '%20'))
+    ans += "</body>"
     return HttpResponse(ans)
