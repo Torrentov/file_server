@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b8d4fe5-151e-4c94-a5a8-fe4cbec8f9db" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/password_check/check_passw.php" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/password_check/templates/passw.html" afterPath="$PROJECT_DIR$/password_check/templates/passw.html" />
       <change beforePath="$PROJECT_DIR$/server/vars.py" afterPath="$PROJECT_DIR$/server/vars.py" />
-      <change beforePath="$PROJECT_DIR$/upload/templates/upload.html" afterPath="$PROJECT_DIR$/upload/templates/upload.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,14 +13,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="passw.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="passw.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/password_check/templates/passw.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
+            <state relative-caret-position="660">
               <caret line="30" column="32" lean-forward="false" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#div#0;n#noscript#0;n#body#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vars.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/vars.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -37,6 +44,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/password_check/templates/passw.html" />
+        <option value="$PROJECT_DIR$/server/vars.py" />
       </list>
     </option>
   </component>
@@ -78,6 +86,11 @@
               <item name="server" type="462c0819:PsiDirectoryNode" />
               <item name="password_check" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -151,11 +164,19 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/password_check/templates/passw.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
+        <state relative-caret-position="660">
           <caret line="30" column="32" lean-forward="false" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
           <folding>
             <element signature="n#style#0;n#img#0;n#div#0;n#noscript#0;n#body#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/vars.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
