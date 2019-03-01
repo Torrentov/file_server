@@ -12,7 +12,7 @@ def get_passw(request):
     error = ''
     user = None
     if request.method == "POST":
-        user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
+        user = authenticate(request, username=request.POST['login'], password=request.POST['pass'])
         if user is not None:
                 login(request, user)
                 request.session['auth'] = 1

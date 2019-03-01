@@ -108,6 +108,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = '/'
+
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 SESSION_COOKIE_HTTPONLY = True
