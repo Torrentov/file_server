@@ -21,19 +21,26 @@ def index(request):
     ans += '</head>\n'
     ans += '<body style="background: beige">'
     ans += '{% load staticfiles %}\n'
-    ans += "<h1><a href='%s?folder=%s' style='color: #2a5c03'><font face='Calibri'>**Создать папку**</font></a></h1>\n"  %\
-    (SITE_CREATE_FOLDER, real_path.replace(' ', '%20'))
+    ans += "<a href='" + SITE_CREATE_FOLDER + "?folder=" + real_path.replace(' ', '%20') + "' style='color: #2a5c03'> " \
+           "<img src='{% static 'images/create_folder.png' %}'" \
+           " alt='Создать папку' title='Создать папку' width=70 height=70></a>\n"
+    ans += "&#160;&#160;&#160;&#160;&#160;"
+    ans += "<a href='" + SITE_UPLOAD + "?folder=" + folder.replace(' ', '%20') + "' style='color: #2a5c03'> " \
+           "<img src='{% static 'images/upload_file.png' %}'" \
+           " alt='Загрузить файл' title='Загрузить файл' width=70 height=70></a>\n"
     if folder != 'needed_files/':
-        ans += "<h1><a href='%s?delete=%s' style='color: #2a5c03'><font face='Calibri'>**Удалить папку**</font></a></h1>\n" %\
-        (SITE_DELETE_FOLDER, real_path.replace(' ', '%20'))
-    ans += "<h1><a href='%s?folder=%s' style='color: #2a5c03'><font face='Calibri'>**Загрузить файл**</font></a></h1></br>\n" % \
-    (SITE_UPLOAD, folder.replace(' ', '%20'))
+        ans += "&#160;&#160;&#160;&#160;&#160;"
+        ans += "<a href='" + SITE_DELETE_FOLDER + "?folder=" + real_path.replace(' ', '%20') + "' style='color: #2a5c03'> " \
+            "<img src='{% static 'images/trash_bin.png' %}'" \
+            " alt='Удалить папку' title='Удалить папку' width=70 height=70></a>\n"
+    ans += "</br></br></br></br></br>"
     if folder != 'needed_files/':
         curr = folder.split('/')[:-2]
         fold = ''
         for elem in curr:
             fold += elem + '/'
-        ans += "<h1><a href=" + SITE + fold.replace(' ', '%20') + " style='color: #2a5c03'>**Назад**</a></h1>\n"
+        ans += "<a href=" + SITE + fold.replace(' ', '%20') + " style='color: #2a5c03'>" \
+            "<img src='{% static 'images/back_icon.png' %}' alt='Назад' title='Назад' height=70 width=70></a>\n"
     current = []
     logs = open(SERVER_PATH + "/server/logs.txt", "r")
     time_base = dict()
@@ -49,21 +56,22 @@ def index(request):
             current_path = elem[2] + elem[0] + '/'
             curr = current_path.replace(FILE_PATH, '')
             ans += '<h1><img src="{% static "images/folder_icon.png" %}"' \
-                   ' alt="Папка" height="50" width="50" />' +\
+                   ' alt="Папка" height="50" width="50" />&#160;&#160;' +\
                 "<a href='/files?folder=needed_files" +\
                 curr.replace(' ', '%20') + "'><font face='Calibri'>" + elem[0] + "</font></a>" + \
-                "<input type='hidden' name=" + elem[0].replace(' ', '%20') + " value=" +\
+                "<input type='hidden' class='zalupa' name=" + elem[0].replace(' ', '%20') + " value=" +\
                    time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
                    "></h1>\n"
         else:
             current_file = elem[2] + elem[0]
             current_file = current_file.replace(PATH + 'static/', '')
-            ans += "<h1><img src=" + '"' + '{% static ' + '"images/file_icon.png"' + ' %}' + '"' + " height='50' width='40' alt='Файл'/>" +\
+            ans += "<h1><img src=" + '"' + '{% static ' + '"images/file_icon.png"' + ' %}' + '"' + " height='50' width='40' alt='Файл'/>&#160;&#160;" +\
                 "<a href='" + '{% static "' + request.GET['folder'] + elem[0] + '" %}' + "'" +\
                 " download><font face='Calibri'>" + "" + elem[
-                0] + "</font></a>&#160;&#160;&#160;&#160;&#160;<a href='" + SITE_DELETE_FILE + "?delete=" + \
-                current_file.replace(' ', '%20') + "' style='color: #2a5c03'><font face='Calibri'>**Удалить файл**</a>" \
-                + "</font><input type='hidden' name=" + elem[0].replace(' ', '%20') + " value=" +\
+                0] + "</font></a>&#160;&#160;<a href='" + SITE_DELETE_FILE + "?delete=" + \
+                current_file.replace(' ', '%20') + "' style='color: #2a5c03'>" + \
+                "<img src='{% static 'images/trash_bin.png' %}' alt='Удалить файл' title='Удалить файл' height=30 width=30></a>" \
+                + "<input type='hidden' class='zalupa' name=" + elem[0].replace(' ', '%20') + " value=" +\
                 time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
                 "></h1>\n"
         current.pop(0)
