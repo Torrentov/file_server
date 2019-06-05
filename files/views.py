@@ -45,7 +45,7 @@ def date_to_comparable(time):
         time[2] = '11'
     if time[2] == 'Dec':
         time[2] = '12'
-    return time[3] + time[2] + time[1] + time[0]
+    return time[3] + time[2] + '%2d' + time[0] % time[1]
 
 
 def size_to_comparable(size):
