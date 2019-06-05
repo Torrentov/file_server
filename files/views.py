@@ -187,7 +187,7 @@ def index(request):
             date = ctime_to_normal(date)
             size = size_to_normal(a.st_size)
             ans += '<tr><td><img src="{% static "images/folder_icon.png" %}"' \
-                   ' alt="Папка" height="30" width="30" />' +\
+                   ' alt="Папка" height="30" width="35" />' +\
                 "</td><td><a href='/files?folder=needed_files" +\
                 curr.replace(' ', '%20') + "'>" + elem[0] + "</a></td>" \
                 "<td>" + date + "</td><td>" + size + "</td></tr>" + \
