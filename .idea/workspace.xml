@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b8d4fe5-151e-4c94-a5a8-fe4cbec8f9db" name="Default" comment="">
+    <list default="true" id="0b8d4fe5-151e-4c94-a5a8-fe4cbec8f9db" name="Default" comment="bugs fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/files/templates/site.html" afterPath="$PROJECT_DIR$/files/templates/site.html" />
       <change beforePath="$PROJECT_DIR$/files/views.py" afterPath="$PROJECT_DIR$/files/views.py" />
+      <change beforePath="$PROJECT_DIR$/server/vars.py" afterPath="$PROJECT_DIR$/server/vars.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,8 +19,8 @@
       <file leaf-file-name="vars.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/vars.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+            <state relative-caret-position="374">
+              <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -27,8 +29,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/files/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3011">
-              <caret line="213" column="122" lean-forward="false" selection-start-line="213" selection-start-column="122" selection-end-line="213" selection-end-column="122" />
+            <state relative-caret-position="252">
+              <caret line="97" column="22" lean-forward="false" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -298,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559757638098</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="bugs fixed">
+      <created>1559757783358</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1559757783358</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -338,12 +347,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new icons" />
-    <MESSAGE value="bugs fixed" />
     <MESSAGE value="Now table can be sorted" />
     <MESSAGE value="sorting bugs fixed" />
     <MESSAGE value="better icons design" />
     <MESSAGE value="better design" />
-    <option name="LAST_COMMIT_MESSAGE" value="better design" />
+    <MESSAGE value="bugs fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="bugs fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -671,16 +680,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/vars.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        <state relative-caret-position="374">
+          <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/files/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3011">
-          <caret line="213" column="122" lean-forward="false" selection-start-line="213" selection-start-column="122" selection-end-line="213" selection-end-column="122" />
+        <state relative-caret-position="252">
+          <caret line="97" column="22" lean-forward="false" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
           <folding />
         </state>
       </provider>

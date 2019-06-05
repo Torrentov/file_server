@@ -65,8 +65,8 @@ def index(request):
     raw_current = os.listdir(path=real_path)
     ans = '<head><title>Файлы</title>'
     ans += '<style> #border-wrap {position: relative; padding: 1rem; background: radial-gradient(at bottom left, #21d4fd, #b721ff); padding: 10px} </style>'
-    ans += '<style> th {border: 2px solid grey; border-top: transparent; border-left: transparent; border-right: transparent; vertical-align: bottom; font-size: 40; font-family: Calibri} </style>'
-    ans += '<style> td {border: 2px solid grey; border-bottom: transparent; border-left: transparent; border-right: transparent; vertical-align: bottom; font-size: 30; font-family: Calibri} </style>'
+    ans += '<style> th {border: 2px solid grey; border-top: transparent; border-left: transparent; border-right: transparent; vertical-align: middle; font-size: 40; font-family: Calibri} </style>'
+    ans += '<style> td {border: 2px solid grey; border-bottom: transparent; border-left: transparent; border-right: transparent; vertical-align: middle; font-size: 30; font-family: Calibri} </style>'
     ans += '<style> table {padding: 2rem; border: transparent; border-collapse: collapse; width: 100%; margin: auto; text-align: center; background-color: #ffffff} </style>'
     ans += '<style> a { text-decoration: none; } </style>'
     ans += '<style type="text/css"> A { color: #8b4513; } A:visited { color: #8b4513; } </style>'
@@ -95,6 +95,7 @@ def index(request):
             fold += elem + '/'
         ans += "<a href=" + SITE + fold.replace(' ', '%20') + " style='color: #2a5c03'>" \
             "<img src='{% static 'images/back_icon.png' %}' alt='Назад' title='Назад' height=70 width=77></a>\n"
+        ans += "&#160;"
     current = []
     logs = open(SERVER_PATH + "/server/logs.txt", "r")
     time_base = dict()
@@ -111,7 +112,7 @@ def index(request):
            "Дата изменения<a href=files?folder=" + folder.replace(' ', '%20') + "&sorted=2_down><img src='{% static 'images/down_arrow.png' %}' alt='Отсортировать по убыванию' title='Отсортировать по убыванию' width=28 height=30></a></th>" \
            "<th><a href=files?folder=" + folder.replace(' ', '%20') + "&sorted=3_up><img src='{% static 'images/up_arrow.png' %}' alt='Отсортировать по возрастанию' title='Отсортировать по возрастанию' width=28 height=30></a>" \
            "Размер<a href=files?folder=" + folder.replace(' ', '%20') + "&sorted=3_down><img src='{% static 'images/down_arrow.png' %}' alt='Отсортировать по убыванию' title='Отсортировать по убыванию' width=28 height=30></a></th>" \
-           "</tr>"
+           "<th></th></tr>"
     for elem in raw_current:
         current.append([elem, 0, real_path])
     needed_sort = None
@@ -135,7 +136,7 @@ def index(request):
                    ' alt="Папка" height="30" width="36" />' +\
                 "</td><td><a href='/files?folder=needed_files" +\
                 curr.replace(' ', '%20') + "'>" + elem[0] + "</a></td>" \
-                "<td>" + date + "</td><td>" + size + "</td></tr>" + \
+                "<td>" + date + "</td><td>" + size + "</td><td></td></tr>" + \
                 "<input type='hidden' class='zalupa' name=" + elem[0].replace(' ', '%20') + " value=" +\
                    time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
                    ">\n"
@@ -153,7 +154,7 @@ def index(request):
                 0] + "</a></td>" \
                      "<td>" + date + "</td>" \
                      "<td>" + size + \
-                     "&#160;<a href='" + SITE_DELETE_FILE + "?delete=" + \
+                     "&#160;</td><td><a href='" + SITE_DELETE_FILE + "?delete=" + \
                 current_file.replace(' ', '%20') + "' style='color: #2a5c03'>" + \
                 "<img src='{% static 'images/trash_bin.png' %}' alt='Удалить файл' title='Удалить файл' height=30 width=26></a></td></tr>" \
                 + "<input type='hidden' class='zalupa' name=" + elem[0].replace(' ', '%20') + " value=" +\
@@ -192,7 +193,7 @@ def index(request):
                    ' alt="Папка" height="30" width="35" />' +\
                 "</td><td><a href='/files?folder=needed_files" +\
                 curr.replace(' ', '%20') + "'>" + elem[0] + "</a></td>" \
-                "<td>" + date + "</td><td>" + size + "</td></tr>" + \
+                "<td>" + date + "</td><td>" + size + "</td><td></td></tr>" + \
                 "<input type='hidden' class='zalupa' name=" + elem[0].replace(' ', '%20') + " value=" +\
                    time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
                    ">\n"
@@ -209,7 +210,7 @@ def index(request):
                 0] + "</a></td>" \
                      "<td>" + date + "</td>" \
                      "<td>" + size + \
-                     "&#160;<a href='" + SITE_DELETE_FILE + "?delete=" + \
+                     "&#160;</td><td><a href='" + SITE_DELETE_FILE + "?delete=" + \
                 current_file.replace(' ', '%20') + "' style='color: #2a5c03'>" + \
                 "<img src='{% static 'images/trash_bin.png' %}' alt='Удалить файл' title='Удалить файл' height=30 width=26></a></td></tr>" \
                 + "<input type='hidden' class='zalupa' name=" + elem[0].replace(' ', '%20') + " value=" +\
