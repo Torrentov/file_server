@@ -64,15 +64,16 @@ def index(request):
     real_path = PATH + "static/" + folder
     raw_current = os.listdir(path=real_path)
     ans = '<head><title>Файлы</title>'
-    ans += '<style> th {border: 2px solid grey; vertical-align: bottom; font-size: 40; font-family: Calibri} </style>'
-    ans += '<style> td {border: 2px solid grey; vertical-align: bottom; font-size: 30; font-family: Calibri} </style>'
-    ans += '<style> table {border-collapse: collapse; width: 100%; text-align: center; class: sortable} </style>'
+    ans += '<style> #border-wrap {position: relative; padding: 1rem; background: radial-gradient(at bottom left, #21d4fd, #b721ff); padding: 10px} </style>'
+    ans += '<style> th {border: 2px solid grey; border-top: transparent; border-left: transparent; border-right: transparent; vertical-align: bottom; font-size: 40; font-family: Calibri} </style>'
+    ans += '<style> td {border: 2px solid grey; border-bottom: transparent; border-left: transparent; border-right: transparent; vertical-align: bottom; font-size: 30; font-family: Calibri} </style>'
+    ans += '<style> table {padding: 2rem; border: transparent; border-collapse: collapse; width: 100%; margin: auto; text-align: center; background-color: #ffffff} </style>'
     ans += '<style> a { text-decoration: none; } </style>'
     ans += '<style type="text/css"> A { color: #8b4513; } A:visited { color: #8b4513; } </style>'
     ans += '<style> @font-face { font-family: Calibri; src: url(%s); } h1 { font-family:' \
            'Calibri; } </style>' % FONT_PATH
     ans += '</head>\n'
-    ans += '<body style="background: beige">'
+    ans += '<body style="background: #fff">'
     ans += '{% load staticfiles %}\n'
     ans += "<a href='" + SITE_CREATE_FOLDER + "?folder=" + real_path.replace(' ', '%20') + "' style='color: #2a5c03'> " \
            "<img src='{% static 'images/create_folder.png' %}'" \
@@ -101,7 +102,7 @@ def index(request):
         line = line.split()
         time_base[line[0].replace(PATH + 'static/', '')] = line[1]
     logs.close()
-    ans += "<table id='table'><tr>" \
+    ans += "<div id='border-wrap'><table id='table' style={background-color: #ffffff}><tr>" \
            "<th><a href=files?folder=" + folder.replace(' ', '%20') + "&sorted=0_up><img src='{% static 'images/up_arrow.png' %}' alt='Отсортировать по возрастанию' title='Отсортировать по возрастанию' width=28 height=30></a>" \
            "Тип<a href=files?folder=" + folder.replace(' ', '%20') + "&sorted=0_down><img src='{% static 'images/down_arrow.png' %}' alt='Отсортировать по убыванию' title='Отсортировать по убыванию' width=28 height=30></a></th>" \
            "<th><a href=files?folder=" + folder.replace(' ', '%20') + "&sorted=1_up><img src='{% static 'images/up_arrow.png' %}' alt='Отсортировать по возрастанию' title='Отсортировать по возрастанию' width=28 height=30></a>" \
@@ -171,6 +172,7 @@ def index(request):
             page.sort(reverse=True, key=lambda a: a[needed_sort[0]])
         for elem in page:
             ans += elem[4]
+        ans += "</table></div></body>"
         file = open(SERVER_PATH + "/files/templates/site.html", "w")
         print(ans, file=file)
         file.close()
@@ -215,6 +217,7 @@ def index(request):
                 ">\n"
         current.pop(0)
     file = open(SERVER_PATH + "/files/templates/site.html", "w")
+    ans += "</table></div></body>"
     print(ans, file=file)
     file.close()
     return render(request, "site.html")
