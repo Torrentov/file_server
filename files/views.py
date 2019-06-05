@@ -30,7 +30,7 @@ def index(request):
            " alt='Загрузить файл' title='Загрузить файл' width=70 height=70></a>\n"
     if folder != 'needed_files/':
         ans += "&#160;&#160;&#160;&#160;&#160;"
-        ans += "<a href='" + SITE_DELETE_FOLDER + "?folder=" + real_path.replace(' ', '%20') + "' style='color: #2a5c03'> " \
+        ans += "<a href='" + SITE_DELETE_FOLDER + "?delete=" + real_path.replace(' ', '%20') + "' style='color: #2a5c03'> " \
             "<img src='{% static 'images/trash_bin.png' %}'" \
             " alt='Удалить папку' title='Удалить папку' width=70 height=70></a>\n"
     ans += "</br></br></br></br></br>"
