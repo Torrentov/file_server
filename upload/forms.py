@@ -6,9 +6,8 @@ class UploadFileForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(UploadFileForm, self).__init__(*args, **kwargs)
         self.label_suffix = ''
-        self.fields['docfile'].widget.attrs.update({'style': 'height:30px;'
-                                                             'font-size:20px;'
-                                                             'font-family:"Calibri";'})
+        self.fields['docfile'].widget.attrs.update({'style':'font-size: 100; padding-top: 80px;'
+                                                            'padding-bottom: 20px'})
     class Meta:
         model = Document
         fields = ['docfile']
