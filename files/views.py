@@ -211,7 +211,7 @@ def index(request):
                      "<td>" + size + \
                      "&#160;<a href='" + SITE_DELETE_FILE + "?delete=" + \
                 current_file.replace(' ', '%20') + "' style='color: #2a5c03'>" + \
-                "<img src='{% static 'images/trash_bin.png' %}' alt='Удалить файл' title='Удалить файл' height=30 width=30></a></td></tr>" \
+                "<img src='{% static 'images/trash_bin.png' %}' alt='Удалить файл' title='Удалить файл' height=30 width=26></a></td></tr>" \
                 + "<input type='hidden' class='zalupa' name=" + elem[0].replace(' ', '%20') + " value=" +\
                 time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
                 ">\n"
