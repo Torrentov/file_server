@@ -19,6 +19,44 @@ def size_to_normal(size):
     return str(size // 1024) + ' КБ'
 
 
+def date_to_comparable(time):
+    time = time.split()
+    if time[2] == 'Jan':
+        time[2] = '01'
+    if time[2] == 'Feb':
+        time[2] = '02'
+    if time[2] == 'Mar':
+        time[2] = '03'
+    if time[2] == 'Apr':
+        time[2] = '04'
+    if time[2] == 'May':
+        time[2] = '05'
+    if time[2] == 'Jun':
+        time[2] = '06'
+    if time[2] == 'Jul':
+        time[2] = '07'
+    if time[2] == 'Aug':
+        time[2] = '08'
+    if time[2] == 'Sep':
+        time[2] = '09'
+    if time[2] == 'Oct':
+        time[2] = '10'
+    if time[2] == 'Nov':
+        time[2] = '11'
+    if time[2] == 'Dec':
+        time[2] = '12'
+    return time[3] + time[2] + time[1] + time[0]
+
+
+def size_to_comparable(size):
+    size = size.split()
+    if size[1] == 'МБ':
+        return int(size[0]) * 1024 * 1024
+    if size[1] == 'КБ':
+        return int(size[0]) * 1024
+    return int(size)
+
+
 def index(request):
     if not request.user.is_authenticated or request.session['auth'] != 1:
         return HttpResponseRedirect('/')
@@ -100,7 +138,7 @@ def index(request):
                 "<input type='hidden' class='zalupa' name=" + elem[0].replace(' ', '%20') + " value=" +\
                    time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
                    ">\n"
-                page.append(['folder', elem[0], date, size, output])
+                page.append(['folder', elem[0], date_to_comparable(date), size_to_comparable(size), output])
             else:
                 current_file = elem[2] + elem[0]
                 a = os.stat(current_file)
@@ -120,9 +158,14 @@ def index(request):
                 + "<input type='hidden' class='zalupa' name=" + elem[0].replace(' ', '%20') + " value=" +\
                 time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
                 ">\n"
-                page.append(['file', elem[0], date, size, output])
+                page.append(['file', elem[0], date_to_comparable(date), size_to_comparable(size), output])
             current.pop(0)
-        if needed_sort[1] == 'up':
+        if needed_sort[0] == 1:
+            if needed_sort[1] == 'up':
+                page.sort(key=lambda a: a[1].lower())
+            else:
+                page.sort(reverse=True, key=lambda a: a[1].lower())
+        elif needed_sort[1] == 'up':
             page.sort(key=lambda a: a[needed_sort[0]])
         else:
             page.sort(reverse=True, key=lambda a: a[needed_sort[0]])
