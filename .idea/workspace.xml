@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b8d4fe5-151e-4c94-a5a8-fe4cbec8f9db" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/files/static/images/rename_icon.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/rename/forms.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/rename/templates/rename.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/rename/urls.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/files/static/images/create_folder.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/files/static/images/upload_file.png" afterPath="$PROJECT_DIR$/files/static/images/upload_file.png" />
-      <change beforePath="$PROJECT_DIR$/files/templates/site.html" afterPath="$PROJECT_DIR$/files/templates/site.html" />
-      <change beforePath="$PROJECT_DIR$/files/urls.py" afterPath="$PROJECT_DIR$/files/urls.py" />
-      <change beforePath="$PROJECT_DIR$/files/views.py" afterPath="$PROJECT_DIR$/files/views.py" />
-      <change beforePath="$PROJECT_DIR$/mkdir/views.py" afterPath="$PROJECT_DIR$/mkdir/views.py" />
-      <change beforePath="$PROJECT_DIR$/server/settings.py" afterPath="$PROJECT_DIR$/server/settings.py" />
       <change beforePath="$PROJECT_DIR$/server/vars.py" afterPath="$PROJECT_DIR$/server/vars.py" />
-      <change beforePath="$PROJECT_DIR$/upload/forms.py" afterPath="$PROJECT_DIR$/upload/forms.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,11 +14,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rename/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="317">
               <caret line="26" column="12" lean-forward="false" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vars.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/vars.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="19" column="1" lean-forward="false" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -95,13 +93,13 @@
         <option value="$PROJECT_DIR$/rename/urls.py" />
         <option value="$PROJECT_DIR$/files/urls.py" />
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/server/vars.py" />
         <option value="$PROJECT_DIR$/rename/templates/rename.html" />
         <option value="$PROJECT_DIR$/mkdir/views.py" />
         <option value="$PROJECT_DIR$/rename/forms.py" />
         <option value="$PROJECT_DIR$/server/settings.py" />
         <option value="$PROJECT_DIR$/files/views.py" />
         <option value="$PROJECT_DIR$/rename/views.py" />
+        <option value="$PROJECT_DIR$/server/vars.py" />
       </list>
     </option>
   </component>
@@ -386,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559768264650</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="bugs fixed">
+      <created>1559817739918</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1559817739918</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView">
@@ -430,9 +435,9 @@
     <MESSAGE value="sorting bugs fixed" />
     <MESSAGE value="better icons design" />
     <MESSAGE value="better design &amp; bugs fixed" />
-    <MESSAGE value="bugs fixed" />
     <MESSAGE value="better design" />
-    <option name="LAST_COMMIT_MESSAGE" value="better design" />
+    <MESSAGE value="bugs fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="bugs fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -743,14 +748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/vars.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="61" lean-forward="true" selection-start-line="16" selection-start-column="61" selection-end-line="16" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/files/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1336">
@@ -801,6 +798,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
           <caret line="26" column="12" lean-forward="false" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/vars.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" column="1" lean-forward="false" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
           <folding />
         </state>
       </provider>
