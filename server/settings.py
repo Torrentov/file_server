@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'torrentov.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'rename',
     'mkdir',
     'file_remove',
     'folder_remove',

@@ -6,5 +6,6 @@ urlpatterns = [
     path('/upload', include('upload.urls')),
     path('/delete_file', include('delete_file.urls')),
     path('/delete_folder', include('delete_folder.urls')),
-    path('/mkdir', include('mkdir.urls'))
+    path('/mkdir', include('mkdir.urls')),
+    path('/rename', include('rename.urls')),
 ]

@@ -3,7 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from time import time, ctime
 import os
 from server.vars import SITE_UPLOAD, SITE_DELETE_FOLDER, SITE_DELETE_FILE,\
-    SITE_CREATE_FOLDER, FILE_PATH, SERVER_PATH, SITE, PATH, FONT_PATH
+    SITE_CREATE_FOLDER, FILE_PATH, SERVER_PATH, \
+    SITE, PATH, FONT_PATH, SITE_RENAME
 
 # Create your views here.
 
@@ -64,12 +65,13 @@ def index(request):
     real_path = PATH + "static/" + folder
     raw_current = os.listdir(path=real_path)
     ans = '<head><title>Файлы</title>'
+    ans += '<style> #edit {margin-top: 10px;} </style>'
     ans += '<style> #border-wrap {position: relative; padding: 1rem; background: radial-gradient(at bottom left, #21d4fd, #b721ff); padding: 10px} </style>'
     ans += '<style> th {border: 2px solid grey; border-top: transparent; border-left: transparent; border-right: transparent; vertical-align: middle; font-size: 40; font-family: Calibri} </style>'
-    ans += '<style> td {border: 2px solid grey; border-bottom: transparent; border-left: transparent; border-right: transparent; vertical-align: middle; font-size: 30; font-family: Calibri} </style>'
-    ans += '<style> table {padding: 2rem; border: transparent; border-collapse: collapse; width: 100%; margin: auto; text-align: center; background-color: #ffffff} </style>'
+    ans += '<style> td {padding-left: 29px; border: 2px solid grey; border-bottom: transparent; border-left: transparent; border-right: transparent; vertical-align: middle; font-size: 30; font-family: Calibri} </style>'
+    ans += '<style> table {padding: 2rem; border: transparent; border-collapse: collapse; width: 100%; margin: auto; text-align: left; background-color: #ffffff} </style>'
     ans += '<style> a { text-decoration: none; } </style>'
-    ans += '<style type="text/css"> A { color: #8b4513; } A:visited { color: #8b4513; } </style>'
+    ans += '<style type="text/css"> A { color: #a55ac4; } A:visited { color: #a55ac4; } </style>'
     ans += '<style> @font-face { font-family: Calibri; src: url(%s); } h1 { font-family:' \
            'Calibri; } </style>' % FONT_PATH
     ans += '</head>\n'
@@ -82,11 +84,6 @@ def index(request):
     ans += "<a href='" + SITE_UPLOAD + "?folder=" + folder.replace(' ', '%20') + "' style='color: #2a5c03'> " \
            "<img src='{% static 'images/upload_file.png' %}'" \
            " alt='Загрузить файл' title='Загрузить файл' width=86 height=70></a>\n"
-    if folder != 'needed_files/':
-        ans += "&#160;&#160;&#160;&#160;&#160;"
-        ans += "<a href='" + SITE_DELETE_FOLDER + "?delete=" + real_path.replace(' ', '%20') + "' style='color: #2a5c03'> " \
-            "<img src='{% static 'images/trash_bin.png' %}'" \
-            " alt='Удалить папку' title='Удалить папку' width=61 height=70></a>\n"
     ans += "</br></br></br></br></br>"
     if folder != 'needed_files/':
         curr = folder.split('/')[:-2]
@@ -136,10 +133,14 @@ def index(request):
                    ' alt="Папка" height="30" width="36" />' +\
                 "</td><td><a href='/files?folder=needed_files" +\
                 curr.replace(' ', '%20') + "'>" + elem[0] + "</a></td>" \
-                "<td>" + date + "</td><td>" + size + "</td><td></td></tr>" + \
-                "<input type='hidden' class='zalupa' name=" + elem[0].replace(' ', '%20') + " value=" +\
-                   time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
-                   ">\n"
+                "<td>" + date + "</td><td>" + size + "</td><td style='vertical-align: bottom'>" \
+                "<a href='" + SITE_DELETE_FOLDER + "?delete=" + current_path.replace(' ', '%20') + "' style='color: #2a5c03'> " \
+                "<img src='{% static 'images/trash_bin.png' %}'" \
+                " alt='Удалить папку' title='Удалить папку' width=26 height=30></a>" \
+                "<a href='" + SITE_RENAME + "?current_name=" + current_path.replace(' ', '%20') + "' style='color: #2a5c03'> " \
+                "<img src='{% static 'images/rename_icon.png' %}'" \
+                " alt='Переименовать' title='Переименовать' width=30 height=30></a>" \
+                "</td></tr>\n"
                 page.append(['folder', elem[0], date_to_comparable(date), size_to_comparable(size), output])
             else:
                 current_file = elem[2] + elem[0]
@@ -147,6 +148,7 @@ def index(request):
                 date = ctime(a.st_mtime).split()[1:]
                 date = ctime_to_normal(date)
                 size = size_to_normal(a.st_size)
+                rename_path = current_file.replace(' ', '%20')
                 current_file = current_file.replace(PATH + 'static/', '')
                 output = "<tr><td><img src=" + '"' + '{% static ' + '"images/file_icon.png"' + ' %}' + '"' + " height='30' width='24' alt='Файл'/></td>"\
                 "<td><a href='" + '{% static "' + request.GET['folder'] + elem[0] + '" %}' + "'" +\
@@ -156,10 +158,11 @@ def index(request):
                      "<td>" + size + \
                      "&#160;</td><td><a href='" + SITE_DELETE_FILE + "?delete=" + \
                 current_file.replace(' ', '%20') + "' style='color: #2a5c03'>" + \
-                "<img src='{% static 'images/trash_bin.png' %}' alt='Удалить файл' title='Удалить файл' height=30 width=26></a></td></tr>" \
-                + "<input type='hidden' class='zalupa' name=" + elem[0].replace(' ', '%20') + " value=" +\
-                time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
-                ">\n"
+                "<img src='{% static 'images/trash_bin.png' %}' alt='Удалить файл' title='Удалить файл' height=30 width=26></a>" \
+                "<a href='" + SITE_RENAME + "?current_name=" + rename_path.replace(' ', '%20') + "' style='color: #2a5c03'> " \
+                "<img src='{% static 'images/rename_icon.png' %}'" \
+                " alt='Переименовать' title='Переименовать' width=30 height=30></a>" \
+                "</td></tr>\n"
                 page.append(['file', elem[0], date_to_comparable(date), size_to_comparable(size), output])
             current.pop(0)
         if needed_sort[0] == 1:
@@ -190,19 +193,24 @@ def index(request):
             date = ctime_to_normal(date)
             size = size_to_normal(a.st_size)
             ans += '<tr><td><img src="{% static "images/folder_icon.png" %}"' \
-                   ' alt="Папка" height="30" width="35" />' +\
+                   ' alt="Папка" height="30" width="36" />' +\
                 "</td><td><a href='/files?folder=needed_files" +\
                 curr.replace(' ', '%20') + "'>" + elem[0] + "</a></td>" \
-                "<td>" + date + "</td><td>" + size + "</td><td></td></tr>" + \
-                "<input type='hidden' class='zalupa' name=" + elem[0].replace(' ', '%20') + " value=" +\
-                   time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
-                   ">\n"
+                "<td>" + date + "</td><td>" + size + "</td><td><div id='edit'>" \
+                "<a href='" + SITE_DELETE_FOLDER + "?delete=" + current_path.replace(' ', '%20') + "' style='color: #2a5c03'> " \
+                "<img src='{% static 'images/trash_bin.png' %}'" \
+                " alt='Удалить папку' title='Удалить папку' width=26 height=30></a>" \
+                "<a href='" + SITE_RENAME + "?current_name=" + current_path.replace(' ', '%20') + "' style='color: #2a5c03'> " \
+                "<img src='{% static 'images/rename_icon.png' %}'" \
+                " alt='Переименовать' title='Переименовать' width=30 height=30></a>" \
+                "</div></td></tr>\n"
         else:
             current_file = elem[2] + elem[0]
             a = os.stat(current_file)
             date = ctime(a.st_mtime).split()[1:]
             date = ctime_to_normal(date)
             size = size_to_normal(a.st_size)
+            rename_path = current_file.replace(' ', '%20')
             current_file = current_file.replace(PATH + 'static/', '')
             ans += "<tr><td><img src=" + '"' + '{% static ' + '"images/file_icon.png"' + ' %}' + '"' + " height='30' width='24' alt='Файл'/></td>"\
                 "<td><a href='" + '{% static "' + request.GET['folder'] + elem[0] + '" %}' + "'" +\
@@ -210,12 +218,13 @@ def index(request):
                 0] + "</a></td>" \
                      "<td>" + date + "</td>" \
                      "<td>" + size + \
-                     "&#160;</td><td><a href='" + SITE_DELETE_FILE + "?delete=" + \
+                     "&#160;</td><td><div id='edit'><a href='" + SITE_DELETE_FILE + "?delete=" + \
                 current_file.replace(' ', '%20') + "' style='color: #2a5c03'>" + \
-                "<img src='{% static 'images/trash_bin.png' %}' alt='Удалить файл' title='Удалить файл' height=30 width=26></a></td></tr>" \
-                + "<input type='hidden' class='zalupa' name=" + elem[0].replace(' ', '%20') + " value=" +\
-                time_base[(request.GET['folder'] + elem[0]).replace(' ', '%20')] +\
-                ">\n"
+                "<img src='{% static 'images/trash_bin.png' %}' alt='Удалить файл' title='Удалить файл' height=30 width=26></a>" \
+                "<a href='" + SITE_RENAME + "?current_name=" + rename_path + "' style='color: #2a5c03'> " \
+                "<img src='{% static 'images/rename_icon.png' %}'" \
+                " alt='Переименовать' title='Переименовать' width=30 height=30></a>" \
+                "</div></td></tr>\n"
         current.pop(0)
     file = open(SERVER_PATH + "/files/templates/site.html", "w")
     ans += "</table></div></body>"
