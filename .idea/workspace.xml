@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0b8d4fe5-151e-4c94-a5a8-fe4cbec8f9db" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/files/templates/site.html" afterPath="$PROJECT_DIR$/files/templates/site.html" />
-      <change beforePath="$PROJECT_DIR$/rename/views.py" afterPath="$PROJECT_DIR$/rename/views.py" />
       <change beforePath="$PROJECT_DIR$/server/vars.py" afterPath="$PROJECT_DIR$/server/vars.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,7 +14,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rename/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
@@ -26,11 +24,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vars.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="vars.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/vars.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="418">
-              <caret line="19" column="41" lean-forward="false" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+              <caret line="19" column="1" lean-forward="false" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -100,8 +98,8 @@
         <option value="$PROJECT_DIR$/rename/forms.py" />
         <option value="$PROJECT_DIR$/server/settings.py" />
         <option value="$PROJECT_DIR$/files/views.py" />
-        <option value="$PROJECT_DIR$/server/vars.py" />
         <option value="$PROJECT_DIR$/rename/views.py" />
+        <option value="$PROJECT_DIR$/server/vars.py" />
       </list>
     </option>
   </component>
@@ -420,7 +418,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559817888106</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="rename aded">
+      <created>1559818646099</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1559818646099</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView">
@@ -466,7 +471,8 @@
     <MESSAGE value="better design &amp; bugs fixed" />
     <MESSAGE value="better design" />
     <MESSAGE value="bugs fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="bugs fixed" />
+    <MESSAGE value="rename aded" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename aded" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -823,18 +829,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/vars.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="41" lean-forward="false" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rename/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="43" column="97" lean-forward="false" selection-start-line="43" selection-start-column="97" selection-end-line="43" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/vars.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" column="1" lean-forward="false" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
           <folding />
         </state>
       </provider>
