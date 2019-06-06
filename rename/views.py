@@ -39,7 +39,8 @@ def index(request):
                 else:
                     name += '(%s)' % str(i)
             os.rename(current_name, real_path + name)
-            current_name = current_name.replace(PATH, '').split('/')[-1]
+            current_name = current_name.split('/')
+            current_name = current_name[::-1][1]
             return HttpResponseRedirect(current_site.replace(' ', '%20').replace(current_name, ''))
     else:
         form = RenameForm()
