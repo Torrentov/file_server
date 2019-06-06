@@ -15,6 +15,8 @@ def ctime_to_normal(date):
 
 
 def size_to_normal(size):
+    if size == '—':
+        return size
     if size // 1048576 >= 10:
         return str(size // 1048576) + ' МБ'
     return str(size // 1024) + ' КБ'
@@ -50,6 +52,8 @@ def date_to_comparable(time):
 
 
 def size_to_comparable(size):
+    if size == '—':
+        return 0
     size = size.split()
     if size[1] == 'МБ':
         return int(size[0]) * 1024 * 1024
@@ -128,7 +132,7 @@ def index(request):
                 a = os.stat(current_path)
                 date = ctime(a.st_mtime).split()[1:]
                 date = ctime_to_normal(date)
-                size = size_to_normal(a.st_size)
+                size = '—'
                 output = '<tr><td><img src="{% static "images/folder_icon.png" %}"' \
                    ' alt="Папка" height="30" width="36" />' +\
                 "</td><td><a href='/files?folder=needed_files" +\
@@ -191,7 +195,7 @@ def index(request):
             a = os.stat(current_path)
             date = ctime(a.st_mtime).split()[1:]
             date = ctime_to_normal(date)
-            size = size_to_normal(a.st_size)
+            size = '—'
             ans += '<tr><td><img src="{% static "images/folder_icon.png" %}"' \
                    ' alt="Папка" height="30" width="36" />' +\
                 "</td><td><a href='/files?folder=needed_files" +\
